@@ -25,13 +25,11 @@
 
     <main>
         <div class="container">
-            <!-- h1 oculto por CSS para igualar el mock -->
             <h1>Cargar Factura en PDF</h1>
 
             <form action="" method="post" enctype="multipart/form-data" class="upload-card">
             {% csrf_token %}
 
-            <!-- Icono nube -->
             <svg class="upload-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M7 18a5 5 0 1 1 1.4-9.8A6 6 0 0 1 21 13a4 4 0 0 1-4 5H7z" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M12 14V8m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -43,7 +41,6 @@
 
             <input id="pdf_file" class="input-file" type="file" name="pdf_file" accept="application/pdf" required>
             <label for="pdf_file" class="btn-primary">
-                <!-- ícono flecha arriba -->
                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 5v14M12 5l-4 4m4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>

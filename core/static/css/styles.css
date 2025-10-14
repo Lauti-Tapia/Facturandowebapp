@@ -1,19 +1,17 @@
-/* ========= Reset + base ========= */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
-  color: #111827;               /* Gray 900 */
+  color: #111827;               
   background: #ffffff;
   display: flex;
   flex-direction: column;
 }
 
-/* ========= Header ========= */
 header {
   background: #fff;
-  border-bottom: 1px solid #e5e7eb; /* Gray 200 */
+  border-bottom: 1px solid #e5e7eb; 
 }
 .header-nav {
   max-width: 1200px;
@@ -49,7 +47,6 @@ header {
 }
 .nav-links a:hover { text-decoration: underline; }
 
-/* ========= Main ========= */
 main {
   flex: 1 0 auto;
 }
@@ -59,17 +56,15 @@ main {
   padding: 48px 24px 64px;
 }
 
-/* título opcional */
 main h1 {
-  display: none; /* oculto para calcar el mock; quítalo si querés mostrarlo */
+  display: none; 
 }
 
-/* --- Upload card --- */
 .upload-card {
   width: min(800px, 92vw);
-  margin: 120px auto;            /* separaciones como el mock */
-  background: #f9fafb;           /* Gray 50 */
-  border: 2px dashed #d1d5db;    /* Gray 300 */
+  margin: 120px auto;            
+  background: #f9fafb;           
+  border: 2px dashed #d1d5db;   
   border-radius: 12px;
   padding: 40px;
   text-align: center;
@@ -80,10 +75,9 @@ main h1 {
   height: 48px;
   display: block;
   margin: 0 auto 16px;
-  color: #6b7280; /* Gray 500 */
+  color: #6b7280; 
 }
 
-/* texto auxiliar */
 .upload-hint {
   margin: 0 0 16px;
   color: #111827;
@@ -91,7 +85,6 @@ main h1 {
   line-height: 1.6;
 }
 
-/* input file oculto + label como botón */
 .input-file {
   position: absolute;
   width: 1px; height: 1px; overflow: hidden;
@@ -113,17 +106,15 @@ main h1 {
 }
 .btn-primary:hover { background: #000000; }
 .btn-primary:focus-visible {
-  outline: 2px solid #93c5fd;   /* focus ring */
+  outline: 2px solid #93c5fd;   
   outline-offset: 2px;
 }
 
-/* pequeño ícono dentro del botón */
 .btn-icon {
   width: 16px; height: 16px;
   display: inline-block;
 }
 
-/* ========= Footer ========= */
 .site-footer {
   border-top: 1px solid #e5e7eb;
   background: #fff;
@@ -142,7 +133,7 @@ main h1 {
   gap: 20px;
 }
 .footer-links a {
-  color: #6b7280;                /* Gray 500 */
+  color: #6b7280;              
   text-decoration: none;
   font-size: 14px;
 }
@@ -152,7 +143,6 @@ main h1 {
   font-size: 14px;
 }
 
-/* ========= Responsivo ========= */
 @media (max-width: 640px) {
   .header-nav { height: 64px; }
   .nav-links { gap: 18px; }
