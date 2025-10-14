@@ -1,0 +1,160 @@
+/* ========= Reset + base ========= */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+  color: #111827;               /* Gray 900 */
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========= Header ========= */
+header {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb; /* Gray 200 */
+}
+.header-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 72px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-brand h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #111827;
+  font-size: 14px;
+}
+.nav-links a:hover { text-decoration: underline; }
+
+/* ========= Main ========= */
+main {
+  flex: 1 0 auto;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* título opcional */
+main h1 {
+  display: none; /* oculto para calcar el mock; quítalo si querés mostrarlo */
+}
+
+/* --- Upload card --- */
+.upload-card {
+  width: min(800px, 92vw);
+  margin: 120px auto;            /* separaciones como el mock */
+  background: #f9fafb;           /* Gray 50 */
+  border: 2px dashed #d1d5db;    /* Gray 300 */
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto 16px;
+  color: #6b7280; /* Gray 500 */
+}
+
+/* texto auxiliar */
+.upload-hint {
+  margin: 0 0 16px;
+  color: #111827;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* input file oculto + label como botón */
+.input-file {
+  position: absolute;
+  width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #0f0f0f;
+}
+.btn-primary:hover { background: #000000; }
+.btn-primary:focus-visible {
+  outline: 2px solid #93c5fd;   /* focus ring */
+  outline-offset: 2px;
+}
+
+/* pequeño ícono dentro del botón */
+.btn-icon {
+  width: 16px; height: 16px;
+  display: inline-block;
+}
+
+/* ========= Footer ========= */
+.site-footer {
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+.footer-links a {
+  color: #6b7280;                /* Gray 500 */
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer-links a:hover { color: #111827; }
+.footer-copy {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ========= Responsivo ========= */
+@media (max-width: 640px) {
+  .header-nav { height: 64px; }
+  .nav-links { gap: 18px; }
+  .upload-card { margin: 64px auto; padding: 28px; }
+}

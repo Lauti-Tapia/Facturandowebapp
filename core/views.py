@@ -1,3 +1,7 @@
+# core/views.py
+# core/views.py
 from django.shortcuts import render
 
-# Create your views here.
+def home(request):
+    # La ruta correcta, sin el "template/" al inicio
+    return render(request, 'core/home.html')
