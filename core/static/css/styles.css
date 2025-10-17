@@ -1,150 +1,160 @@
+/* --- ESTILOS GLOBALES Y RESETEO --- */
+
+/* Asegura que el padding y el borde se incluyan en el ancho y alto total del elemento. */
 * { box-sizing: border-box; }
+
+/* Hace que el html y el body ocupen el 100% de la altura de la ventana. */
 html, body { height: 100%; }
+
+/* Estilos base para toda la página. */
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
-  color: #111827;               
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
+    margin: 0; /* Elimina el margen por defecto. */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif; /* Usa fuentes del sistema para un rendimiento óptimo. */
+    color: #111827; /* Color de texto principal (casi negro). */
+    background: #ffffff; /* Fondo blanco. */
+    display: flex; /* Activa Flexbox. */
+    flex-direction: column; /* Organiza los elementos hijos (header, main, footer) en una columna. */
 }
 
+/* --- ENCABEZADO (HEADER) --- */
 header {
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb; 
+    background: #fff; /* Fondo blanco. */
+    border-bottom: 1px solid #e5e7eb; /* Línea gris sutil en la parte inferior. */
 }
 .header-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 72px;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+    max-width: 1200px; /* Ancho máximo para el contenido. */
+    margin: 0 auto; /* Centra el contenido horizontalmente. */
+    height: 72px; /* Altura fija para la barra de navegación. */
+    padding: 0 24px; /* Espaciado a los lados. */
+    display: flex; /* Activa Flexbox para alinear los elementos. */
+    align-items: center; /* Centra los elementos verticalmente. */
+    justify-content: space-between; /* Empuja el logo y los links a los extremos. */
+    gap: 16px; /* Espacio entre elementos. */
 }
 .header-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex; /* Activa Flexbox. */
+    align-items: center; /* Centra el logo y el título verticalmente. */
+    gap: 12px; /* Espacio entre el logo y el título. */
 }
 .header-brand h3 {
-  margin: 0;
-  font-weight: 600;
-  font-size: 18px;
+    margin: 0; /* Elimina margen del título. */
+    font-weight: 600; /* Texto en seminegrita. */
+    font-size: 18px;
 }
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 28px;
-  margin: 0;
-  padding: 0;
+    list-style: none; /* Quita los puntos de la lista. */
+    display: flex; /* Pone los items de la lista en una fila. */
+    gap: 28px; /* Espacio entre los links. */
+    margin: 0;
+    padding: 0;
 }
 .nav-links a {
-  text-decoration: none;
-  color: #111827;
-  font-size: 14px;
+    text-decoration: none; /* Quita el subrayado de los links. */
+    color: #111827;
+    font-size: 14px;
 }
-.nav-links a:hover { text-decoration: underline; }
+.nav-links a:hover { text-decoration: underline; } /* Añade subrayado al pasar el mouse. */
 
+/* --- CONTENIDO PRINCIPAL (MAIN) --- */
 main {
-  flex: 1 0 auto;
+    flex: 1 0 auto; /* Hace que el 'main' crezca para ocupar el espacio disponible, empujando el footer hacia abajo. */
 }
 .container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 48px 24px 64px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
 }
-
 main h1 {
-  display: none; 
+    display: none; /* Oculta el H1 visualmente, pero sigue siendo accesible para lectores de pantalla. */
 }
-
 .upload-card {
-  width: min(800px, 92vw);
-  margin: 120px auto;            
-  background: #f9fafb;           
-  border: 2px dashed #d1d5db;   
-  border-radius: 12px;
-  padding: 40px;
-  text-align: center;
+    width: min(800px, 92vw); /* Ancho responsivo: 800px como máximo, o 92% del ancho de la ventana si es más pequeño. */
+    margin: 120px auto; /* Centra la tarjeta y le da espacio arriba/abajo. */
+    background: #f9fafb; /* Fondo gris claro. */
+    border: 2px dashed #d1d5db; /* Borde punteado. */
+    border-radius: 12px; /* Bordes redondeados. */
+    padding: 40px;
+    text-align: center;
 }
-
 .upload-icon {
-  width: 48px;
-  height: 48px;
-  display: block;
-  margin: 0 auto 16px;
-  color: #6b7280; 
+    width: 48px;
+    height: 48px;
+    display: block; /* Permite usar margin: auto. */
+    margin: 0 auto 16px; /* Centra el ícono y le da espacio debajo. */
+    color: #6b7280; /* Color del ícono. */
 }
-
 .upload-hint {
-  margin: 0 0 16px;
-  color: #111827;
-  font-size: 16px;
-  line-height: 1.6;
+    margin: 0 0 16px;
+    color: #111827;
+    font-size: 16px;
+    line-height: 1.6; /* Altura de línea para mejor legibilidad. */
 }
 
+/* --- TRUCO PARA OCULTAR EL INPUT Y ESTILIZAR EL BOTÓN --- */
 .input-file {
-  position: absolute;
-  width: 1px; height: 1px; overflow: hidden;
-  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; padding: 0; margin: -1px;
+    /* Estas propiedades ocultan el input de forma accesible, sin usar display: none. */
+    position: absolute;
+    width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; padding: 0; margin: -1px;
 }
 .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  background: #111111;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1px solid #0f0f0f;
+    display: inline-flex; /* Permite alinear el ícono y el texto. */
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #0f0f0f;
 }
 .btn-primary:hover { background: #000000; }
 .btn-primary:focus-visible {
-  outline: 2px solid #93c5fd;   
-  outline-offset: 2px;
+    /* Estilo de foco para accesibilidad (cuando se navega con teclado). */
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
 }
-
 .btn-icon {
-  width: 16px; height: 16px;
-  display: inline-block;
+    width: 16px; height: 16px;
+    display: inline-block;
 }
 
+/* --- PIE DE PÁGINA (FOOTER) --- */
 .site-footer {
-  border-top: 1px solid #e5e7eb;
-  background: #fff;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
 }
 .footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 64px;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 64px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .footer-links {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 .footer-links a {
-  color: #6b7280;              
-  text-decoration: none;
-  font-size: 14px;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
 }
 .footer-links a:hover { color: #111827; }
 .footer-copy {
-  color: #6b7280;
-  font-size: 14px;
+    color: #6b7280;
+    font-size: 14px;
 }
 
+/* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
 @media (max-width: 640px) {
-  .header-nav { height: 64px; }
-  .nav-links { gap: 18px; }
-  .upload-card { margin: 64px auto; padding: 28px; }
+    /* Estos estilos se aplicarán solo en pantallas de 640px de ancho o menos. */
+    .header-nav { height: 64px; }
+    .nav-links { gap: 18px; }
+    .upload-card { margin: 64px auto; padding: 28px; }
 }

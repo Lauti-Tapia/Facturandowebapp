@@ -1,64 +1,91 @@
-{% load static %} 
+{# Carga la etiqueta 'static' de Django para resolver rutas de archivos estáticos #}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- Habilita diseño responsivo en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hoja de estilos servida desde STATIC_ROOT/STATICFILES_DIRS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Syrius Facturando</title>
+    <title>Syrius FacturaX</title>
 </head>
 <body>
+    <!-- Header sitio: branding + navegación principal -->
     <header>
         <div class="header-nav">
             <div class="header-brand">
-            <img src="{% static 'core/imagenes/EstrellaLogo.png' %}" alt="Logo Syrius" width="28" height="28">
-            <h3>FácturaX</h3>
+                <!-- Logo desde estáticos. width/height fijos evitan reflow -->
+                <img src="{% static 'core/imagenes/EstrellaLogo.png' %}" alt="Logo Syrius" width="28" height="28">
+                <h3>FácturaX</h3>
             </div>
 
+            <!-- Navegación anclada a secciones de la misma página -->
             <ul class="nav-links">
-            <li class="nav-item"><a href="#inicio">Inicio</a></li>
-            <li class="nav-item"><a href="#servicios">Servicios</a></li>
-            <li class="nav-item"><a href="#contacto">Contacto</a></li>
+                <li class="nav-item"><a href="#inicio">Inicio</a></li>
+                <li class="nav-item"><a href="#contacto">Contacto</a></li>
             </ul>
         </div>
     </header>
 
     <main>
+        <!-- Contenedor central de la vista -->
         <div class="container">
             <h1>Cargar Factura en PDF</h1>
 
+            <!--
+                Formulario de carga:
+                - action vacío => POST a la misma URL
+                - enctype multipart/form-data => necesario para subida de archivos
+                - class 'upload-card' => estilizado por CSS
+            -->
             <form action="" method="post" enctype="multipart/form-data" class="upload-card">
-            {% csrf_token %}
+                {# Protección CSRF de Django: obligatorio en POST #}
+                {% csrf_token %}
 
-            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 18a5 5 0 1 1 1.4-9.8A6 6 0 0 1 21 13a4 4 0 0 1-4 5H7z" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M12 14V8m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-
-            <p class="upload-hint">
-                Arrastra y suelta tu PDF aquí o haz clic para seleccionar un archivo
-            </p>
-
-            <input id="pdf_file" class="input-file" type="file" name="pdf_file" accept="application/pdf" required>
-            <label for="pdf_file" class="btn-primary">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M12 5l-4 4m4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Ícono decorativo de “nube/subida” (no interactivo) -->
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 18a5 5 0 1 1 1.4-9.8A6 6 0 0 1 21 13a4 4 0 0 1-4 5H7z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M12 14V8m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                Seleccionar Archivo
-            </label>
+
+                <!-- Pista de uso para drag & drop o click -->
+                <p class="upload-hint">
+                    Arrastra y suelta tu PDF aquí o haz clic para seleccionar un archivo
+                </p>
+
+                <!--
+                    Input real de archivo (oculto/estilizado vía CSS):
+                    - accept restringe a PDFs en el selector (no valida en servidor)
+                    - required fuerza selección antes de enviar
+                -->
+                <input id="pdf_file" class="input-file" type="file" name="pdf_file" accept="application/pdf" required>
+
+                <!--
+                    Label asociado al input (mismo 'for' que 'id'):
+                    Permite estilizar un botón accesible que abre el selector de archivos.
+                -->
+                <label for="pdf_file" class="btn-primary">
+                    <!-- Ícono del botón (decorativo) -->
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 5v14M12 5l-4 4m4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Seleccionar Archivo
+                </label>
             </form>
         </div>
     </main>
 
+    <!-- Footer del sitio con enlaces estándar -->
     <footer class="site-footer">
         <div class="footer-inner">
             <nav class="footer-links">
-            <a href="#">Términos</a>
-            <a href="#">Privacidad</a>
-            <a href="#">Ayuda</a>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Ayuda</a>
             </nav>
             <div class="footer-copy">© 2025 Derechos Reservados</div>
         </div>
     </footer>
-    </body>
+</body>
 </html>
