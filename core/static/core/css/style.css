@@ -150,11 +150,46 @@ main h1 {
     color: #6b7280;
     font-size: 14px;
 }
+/* Estilos para el grupo de botones */
+.button-group {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
 
+/* El botón de envío ahora solo cambia el color de fondo */
+.btn-submit {
+    background: #28a745; /* Color verde */
+    border: 1px solid #28a745;
+}
+
+.btn-submit:hover {
+    background: #218838; /* Color verde más oscuro */
+}
 /* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
 @media (max-width: 640px) {
     /* Estos estilos se aplicarán solo en pantallas de 640px de ancho o menos. */
     .header-nav { height: 64px; }
     .nav-links { gap: 18px; }
     .upload-card { margin: 64px auto; padding: 28px; }
+}
+#file-preview {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.pdf-icon {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: 0 auto 10px;
+    color: #d9534f; /* Un color rojo para el PDF */
+}
+
+.file-name-text {
+    font-weight: 500;
+    color: #333;
+    display: block;
+    word-break: break-all; /* Evita que nombres largos rompan el diseño */
 }

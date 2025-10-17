@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <!-- Habilita diseño responsivo en móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ícono de la pestaña del navegador -->
+    <link rel="icon" href="{% static 'core/imagenes/EstrellaLogo.png' %}" type="image/png">
     <!-- Hoja de estilos servida desde STATIC_ROOT/STATICFILES_DIRS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <title>Syrius FacturaX</title>
 </head>
 <body>
@@ -40,38 +42,29 @@
                 - class 'upload-card' => estilizado por CSS
             -->
             <form action="" method="post" enctype="multipart/form-data" class="upload-card">
-                {# Protección CSRF de Django: obligatorio en POST #}
                 {% csrf_token %}
 
-                <!-- Ícono decorativo de “nube/subida” (no interactivo) -->
-                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 18a5 5 0 1 1 1.4-9.8A6 6 0 0 1 21 13a4 4 0 0 1-4 5H7z" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M12 14V8m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <div id="upload-initial-state">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7 18a5 5 0 1 1 1.4-9.8A6 6 0 0 1 21 13a4 4 0 0 1-4 5H7z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M12 14V8m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="upload-hint">
+                        Arrastra y suelta tu PDF aquí o haz clic para seleccionar un archivo
+                    </p>
+                </div>
 
-                <!-- Pista de uso para drag & drop o click -->
-                <p class="upload-hint">
-                    Arrastra y suelta tu PDF aquí o haz clic para seleccionar un archivo
-                </p>
+                <div id="file-preview" style="display: none;">
+                    <img src="{% static 'core/imagenes/icono-pdf.svg' %}" alt="Icono de PDF" class="pdf-icon">
+                    <span id="file-name" class="file-name-text"></span>
+                </div>
 
-                <!--
-                    Input real de archivo (oculto/estilizado vía CSS):
-                    - accept restringe a PDFs en el selector (no valida en servidor)
-                    - required fuerza selección antes de enviar
-                -->
                 <input id="pdf_file" class="input-file" type="file" name="pdf_file" accept="application/pdf" required>
 
-                <!--
-                    Label asociado al input (mismo 'for' que 'id'):
-                    Permite estilizar un botón accesible que abre el selector de archivos.
-                -->
-                <label for="pdf_file" class="btn-primary">
-                    <!-- Ícono del botón (decorativo) -->
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 5v14M12 5l-4 4m4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Seleccionar Archivo
-                </label>
+                <div class="button-group">
+                    <label for="pdf_file" class="btn-primary">Seleccionar Archivo</label>
+                    <button type="submit" class="btn-primary btn-submit">Procesar Archivo</button>
+                </div>
             </form>
         </div>
     </main>
@@ -87,5 +80,6 @@
             <div class="footer-copy">© 2025 Derechos Reservados</div>
         </div>
     </footer>
+    <script src="{% static 'core/js/main.js' %}"></script>
 </body>
 </html>
